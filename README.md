@@ -32,4 +32,3 @@ export default App;
 - 인풋 박스와 버튼을 만들자
     - root/src/components/ToDoForm.jsx 파일 생성
     - [ToDoForm.jsx] 스타일 컴포넌트로 인풋, 버튼 생성 
-

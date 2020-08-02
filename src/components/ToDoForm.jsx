@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from '../styles/color';
+
 
 const ToDoForm = () => {
     // const [inputVal, setInputVal] = useState('');
@@ -36,7 +38,7 @@ const ToDoSubmitButton = styled.button`
   height: 100%;
   cursor: pointer;
   outline: none;
-  color: white;
+  color: ${colors.white};
   background-color: blue;
   border-radius: 10px;
   border: 2px solid gray;
