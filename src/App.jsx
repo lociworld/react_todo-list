@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import ToDoForm from './components/ToDoForm';
+
 
 
 
@@ -9,6 +11,8 @@ const App = () => {
     <Container>
       <Layout>
       <ToDoTitle>오늘의 할일</ToDoTitle>
+      <ToDoForm />
+
       </Layout>
     </Container>
     </>
