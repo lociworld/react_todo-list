@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState, useCallback }from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/color';
 
 
-const ToDoForm = () => {
-    // const [inputVal, setInputVal] = useState('');
+const ToDoForm = ({insertTodolist}) => {
+    const [inputVal, setInputVal] = useState('');
+
+    const handleChangeText = useCallback((e) => {
+        setInputVal(e.target.value);
+    }, []);
+
+    const handleSubmitTodolist = useCallback((e) => {
+        e.preventDefault();
+        insertTodolist({
+           id: `${new Date().getTime()}-${Math.random()}`,
+           text: inputVal,
+           isDone: false,
+           isDelete: false
+        })
+    }, [inputVal, insertTodolist])
 
     return (
         <>
             <ToDoFormContainer>
-                <ToDoInput />
-                <ToDoSubmitButton>+</ToDoSubmitButton>
+                <ToDoInput onChange={handleChangeText}/>
+                <ToDoSubmitButton onClick={handleSubmitTodolist}>+</ToDoSubmitButton>
             </ToDoFormContainer>
+            <div>{inputVal}</div>
         </>
     )
 }

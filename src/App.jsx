@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback}  from 'react';
 import styled from 'styled-components';
 import ToDoForm from './components/ToDoForm';
 
@@ -6,12 +6,18 @@ import ToDoForm from './components/ToDoForm';
 
 
 const App = () => {
+  const [todolist, setTodolist] = useState([]);
+
+  const insertTodolist = useCallback((newTodolist) => {
+    setTodolist([...todolist, newTodolist]);
+  }, [todolist]);
+
   return (
     <>
     <Container>
       <Layout>
       <ToDoTitle>오늘의 할일</ToDoTitle>
-      <ToDoForm />
+      <ToDoForm insertTodolist={insertTodolist} />
 
       </Layout>
     </Container>

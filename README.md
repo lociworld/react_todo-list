@@ -32,3 +32,17 @@ export default App;
 - 인풋 박스와 버튼을 만들자
     - root/src/components/ToDoForm.jsx 파일 생성
     - [ToDoForm.jsx] 스타일 컴포넌트로 인풋, 버튼 생성 
+
+- 컬러셋을 만들자 
+    - root/src/styles/color.js 파일 생성
+    - [color.js] 컬러셋 만들기
+
+- 인풋 기능을 만들자   
+    - [ToDoForm.jsx] 
+    ToDoForm 컴포넌트는 props로 insertTodolist를 받아온다. insertTodolist는 인풋의 내용이다.
+    ~e.preventDefault();~ 는 폼제출 시, 브라우저가 리로드/리프레쉬 되는 것을 막아준다
+    - [App.jsx]
+    useState, useCallback 
+    할일 추가는 불변성을 지키면서 배열에 새 항목을 추가해야 함-> spread 연산자 이용
+
+    
