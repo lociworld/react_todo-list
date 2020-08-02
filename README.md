@@ -45,4 +45,11 @@ export default App;
     useState, useCallback 
     할일 추가는 불변성을 지키면서 배열에 새 항목을 추가해야 함-> spread 연산자 이용
 
+- 인풋 창에 입력된 할 일 목록을 인풋박스 아래에 추가, 완료, 수정, 삭제 
+    - [ToDoListView.jsx]
+    완료, 수정, 삭제 버튼 생성
+    마우스 클릭 시 완료, 수정, 삭제 기능 
+    - [App.jsx]
+    ToDoListView 컴포넌트 임포트
+
     

@@ -1,7 +1,6 @@
-import React, { useState, useCallback }from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/color';
-
 
 const ToDoForm = ({insertTodolist}) => {
     const [inputVal, setInputVal] = useState('');
@@ -18,16 +17,15 @@ const ToDoForm = ({insertTodolist}) => {
            isDone: false,
            isDelete: false
         })
+        // 전송이 끝나면 인풋을 clear해줘서 사용성을 올려준다.
+        setInputVal('');
     }, [inputVal, insertTodolist])
 
     return (
-        <>
-            <ToDoFormContainer>
-                <ToDoInput onChange={handleChangeText}/>
-                <ToDoSubmitButton onClick={handleSubmitTodolist}>+</ToDoSubmitButton>
-            </ToDoFormContainer>
-            <div>{inputVal}</div>
-        </>
+        <ToDoFormContainer>
+            <ToDoInput value={inputVal} onChange={handleChangeText} />
+            <ToDoSubmitButton onClick={handleSubmitTodolist}>전송</ToDoSubmitButton>
+        </ToDoFormContainer>
     )
 }
 
@@ -37,24 +35,31 @@ const ToDoFormContainer = styled.form`
   display: flex;
   align-items: center;
   height: 40px;
+  width: 100%;
 `;
 
 const ToDoInput = styled.input`
   margin-right: 10px;
-  width: 250px;
+  flex: 1;
   padding: 10px;
   box-sizing: border-box;
   outline: none;
   border-radius: 10px;
   border: 2px solid gray;
+  background-color: ${colors.white};
 `;
 
-const ToDoSubmitButton = styled.button`
+export const ToDoSubmitButton = styled.button`
   height: 100%;
   cursor: pointer;
   outline: none;
-  color: ${colors.white};
-  background-color: blue;
+  background-color: ${colors.white};
   border-radius: 10px;
   border: 2px solid gray;
+  transition: 300ms all ease-in-out;
+
+  &:hover {
+    color: ${colors.white};
+    background-color: gray;
+  }
 `;
