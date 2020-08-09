@@ -1,30 +1,38 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/color';
 
-const ToDoForm = ({insertTodolist}) => {
-    const [inputVal, setInputVal] = useState('');
+const ToDoForm = ({insertTodolist, updateTodolist, edit, setEdit, inputVal, setInputVal, updateSubmitTodolist, id, updatedText}) => {
 
     const handleChangeText = useCallback((e) => {
         setInputVal(e.target.value);
-    }, []);
+        console.log("etv", e.target.value)
+    }, [setInputVal]);
+
+
+    // const handleUpdateTodolist = useCallback((e) => {
+    //   setEdit(true)
+    //   updateSubmitTodolist(id, updatedText)
+    // },[setEdit, id, updatedText, updateSubmitTodolist])
+
 
     const handleSubmitTodolist = useCallback((e) => {
         e.preventDefault();
         insertTodolist({
-           id: `${new Date().getTime()}-${Math.random()}`,
-           text: inputVal,
-           isDone: false,
-           isDelete: false
+          id: `${new Date().getTime()}-${Math.random()}`,
+          text: inputVal,
+          isDone: false,
+          isDelete: false,
+          isEdit: false,
         })
         // 전송이 끝나면 인풋을 clear해줘서 사용성을 올려준다.
         setInputVal('');
-    }, [inputVal, insertTodolist])
+    }, [insertTodolist, inputVal, setInputVal])
 
     return (
         <ToDoFormContainer>
-            <ToDoInput value={inputVal} onChange={handleChangeText} />
-            <ToDoSubmitButton onClick={handleSubmitTodolist}>전송</ToDoSubmitButton>
+            <ToDoInput value={inputVal}   placeholder="할일을 입력해봥:)" onChange={handleChangeText} />
+            <ToDoSubmitButton onClick={handleSubmitTodolist}>추가</ToDoSubmitButton>
         </ToDoFormContainer>
     )
 }
